@@ -5,18 +5,23 @@ using namespace std;
 
 int main() {
     HashTable ht;
-    vector<int> keys = {27, 18, 29, 28, 39, 13, 16};
+
+    // Keys to insert into the hash table
+    vector<int> keys = {21, 18, 29, 47, 39, 13, 87};
 
     cout << "Inserting keys: ";
     for (int k : keys) cout << k << " ";
     cout << "\n\n";
 
+    // Insert each key into the table
     for (int key : keys) {
         ht.insert(key);
     }
 
+    // Display final hash table 
     ht.display();
 
+    // Search for a key entered by the user
     int searchKey;
     cout << "Enter a key to search: ";
     cin >> searchKey;
