@@ -17,23 +17,27 @@ int HashTable::hash(int key) {
 
 void HashTable::insert(int key) {
     int index = hash(key);
-    int startIndex = index;
-    int steps = 0;
+    int originalIndex = index;
+    int probes = 0;
 
     while (table[index] != -1) {
+        cout << "Collision at index " << index << " for key " << key << endl;
         index = (index + 1) % TABLE_SIZE;
-        steps++;
+        probes++;
 
-        if (index == startIndex) {
+        if (index == originalIndex) {
             cout << "Hash table is full. Cannot insert key " << key << ".\n";
             return;
         }
     }
 
     table[index] = key;
-    cout << "Inserted key " << key << " at index " << index;
-    if (steps > 0) cout << " (after " << steps << " probe" << (steps > 1 ? "s" : "") << ")";
-    cout << endl;
+
+    if (probes == 0) {
+        cout << "Inserted key " << key << " at index " << index << endl;
+    } else {
+    cout << "Inserted key " << key << " at index " << index << " after " << probes << " probe" << (probes > 1 ? "s" : "") << endl;
+    }
 }
 
 void HashTable::display() {
