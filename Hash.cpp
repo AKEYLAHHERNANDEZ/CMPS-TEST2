@@ -42,8 +42,7 @@ void HashTable::insert(int key) {
     if (probes == 0) {
         cout << "Inserted key " << key << " at index " << index << endl;
     } else {
-        cout << "Inserted key " << key << " at index " << index << " after " 
-             << probes << " probe" << (probes > 1 ? "s" : "") << endl;
+    cout << "Inserted key " << key << " at index " << index << " after " << probes << " probe" << (probes > 1 ? "s" : "") << endl;
     }
 }
 
@@ -51,9 +50,11 @@ void HashTable::insert(int key) {
 void HashTable::display() {
     cout << "\nHash Table:\n";
     for (int i = 0; i < TABLE_SIZE; ++i) {
-        cout << setw(2) << i << ": ";
-        if (table[i] == -1) cout << "[ ]";         // Empty slot
-        else cout << "[" << table[i] << "]";         // Occupied slot
+        cout <<"Index "<< setw(2) << i << ": ";
+        if (table[i] == -1) {
+            cout << "[ ]";  
+        }      
+        else cout << "[" << table[i] << "]";  
         cout << "\n";
     }
     cout << endl;
@@ -62,13 +63,16 @@ void HashTable::display() {
 // Search for a key using linear probing
 bool HashTable::search(int key) {
     int index = hash(key);
-    int startIndex = index;
+    int FIndex = index;
 
     // Keep probing until slot is empty or we loop back
     while (table[index] != -1) {
-        if (table[index] == key) return true;
+        if (table[index] == key) {
+        return true;
+        }
         index = (index + 1) % TABLE_SIZE;
-        if (index == startIndex) break;
+        if (index == FIndex) 
+        break;
     }
 
     return false; 

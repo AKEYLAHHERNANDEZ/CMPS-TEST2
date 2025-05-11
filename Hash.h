@@ -1,6 +1,5 @@
 #ifndef HASHTABLE_H
 #define HASHTABLE_H
-
 #include <vector>
 
 // HashTable class definition
@@ -15,5 +14,4 @@ public:
     void display();             // Display the table
     bool search(int key);       // Search for a key
 };
-
 #endif
